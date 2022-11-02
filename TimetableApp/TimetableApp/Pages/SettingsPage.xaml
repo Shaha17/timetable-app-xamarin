@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pages="clr-namespace:TimetableApp.Pages"
+             x:Class="TimetableApp.Pages.SettingsPage">
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <Picker x:Name="DirectionPicker" Title="Направление" />
+                    </ViewCell>
+                    <ViewCell>
+                        <Picker x:Name="CoursePicker" Title="Курс" />
+                    </ViewCell>
+                    <SwitchCell x:Name="ChangeNotifStatus" Text="Оповещать об изменениях" ></SwitchCell>
+                    <ViewCell>
+                        <Button Clicked="SaveButton_OnClicked" Text="Сохранить" />
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>7.3</LangVersion>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Text.Json" Version="6.0.2" />
+        <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Pages\MainPage.xaml.cs">
+        <DependentUpon>MainPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Pages\TimetablePage.xaml.cs">
+        <DependentUpon>TimetablePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Interfaces" />
+    </ItemGroup>
+</Project>

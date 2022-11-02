@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TimetableApp.Models;assembly=TimetableApp" xmlns:pages="clr-namespace:TimetableApp.Pages"
+             x:Class="TimetableApp.Pages.TimetablePage">
+    <StackLayout>
+        <RefreshView x:Name="RefreshView" Refreshing="RefreshView_OnRefreshing">
+            <WebView x:Name="WebViewTable"
+                     Navigated="WebViewTable_OnNavigated"
+                     VerticalOptions="FillAndExpand"/>
+        </RefreshView>
+        <Label x:Name="DirectionNameLabel" HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               IsVisible="True"
+               TextColor="#002147" FontSize="Large" />
+        <ListView x:Name="LessonList"
+                  IsVisible="True"
+                  SelectionMode="None"
+                  RefreshAllowed="True"
+                  Refreshing="LessonList_OnRefreshing"
+                  IsPullToRefreshEnabled="True"
+                  x:DataType="models:LessonGroup"
+                  CachingStrategy="RecycleElementAndDataTemplate"
+                  ItemSelected="LessonList_OnItemSelected"
+                  HasUnevenRows="True"
+                  SeparatorColor="LightGray"
+                  IsGroupingEnabled="True"
+                  GroupShortNameBinding="{Binding ShortTitle}">
+
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="models:LessonGroup">
+                    <ViewCell>
+                        <StackLayout Padding="0,5,0,5" BackgroundColor="#002147" VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Title }" TextColor="White" HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" TextTransform="Uppercase" FontSize="Large"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate >
+                <DataTemplate x:DataType="models:Lesson">
+                    <ViewCell>
+                        <Grid RowSpacing="0" ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Num}" FontSize="Title"
+                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center" Grid.Column="0" />
+                            <StackLayout Grid.Column="1" Grid.ColumnSpan="6" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Teacher}" Grid.Column="0" VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding Type}" Grid.Column="1" />
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Column="7" Grid.ColumnSpan="2" VerticalOptions="Center"
+                                         HorizontalOptions="Center">
+                                <Label Text="{Binding Time}" FontSize="Small" VerticalOptions="StartAndExpand"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding Classroom}" VerticalOptions="EndAndExpand"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

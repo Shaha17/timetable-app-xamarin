@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Shell BackgroundColor="#002147" xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="TimetableApp.Pages.MainPage">
+
+    <FlyoutItem Title="Моё расписание">
+        <ShellContent Title="Моё расписание" x:Name="TimeTablePageContent">
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Поиск по группе">
+        <ShellContent Title="Поиск по группе" x:Name="SearchPageContent">
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Поиск по преподавателю">
+        <ShellContent Title="Поиск по преподавателю" x:Name="TeachersPageContent">
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Настройки">
+        <ShellContent Title="Настройки" x:Name="SettingsPagesContent">
+        </ShellContent>
+    </FlyoutItem>
+</Shell>
